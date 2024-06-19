@@ -1,75 +1,25 @@
 
 //EJERCICIO 2
-function menorD(n: Integer): Integer;
+
+function ejercicio2(n: Integer; k: Integer): Integer;
 var
-  digit, maxDigit: Integer;
+  cad: string;
+  resultado: string;
 begin
-  digit := 0;
-  maxDigit := 0;
+  cad := IntToStr(n);
+  k := k + 1;
 
-  while n > 0 do
-  begin
-    digit := n mod 10;
-    n := n div 10;
-    if digit > maxDigit then
-    begin
-      maxDigit := digit;
-    end;
-  end;
+  if (k <= Length(cad)) and (k > 0) then
+    resultado := Copy(cad, k, Length(cad) - k + 1)
+  else
+    resultado := '';
 
-  menorD := maxDigit;
-end;
-
-function mayorD(n: Integer): Integer;
-var
-  digit, minDigit: Integer;
-begin
-  digit := 0;
-  minDigit := 9;
-  while n > 0 do
-  begin
-    digit := n mod 10;
-    n := n div 10;
-    if digit < minDigit then
-    begin
-      minDigit := digit;
-    end;
-  end;
-
-  mayorD := minDigit;
-end;
-
-function ejercicio2(n: Integer): string;
-var
-  d, MayorPar, MenorImpar, MenorImpar_MayorPar: Integer;
-  pp, pi: real;
-begin
-
-  MayorPar := 0;
-  MenorImpar := 0;
-  d := 0;
-  while n > 0 do
-  begin
-    d := n mod 10;
-    if d mod 2 = 0 then
-    begin
-      MayorPar := MayorPar * 10 + d;
-
-    end
-    else
-    begin
-      MenorImpar := MenorImpar * 10 + d;
-
-    end;
-    n := n div 10;
-
-  end;
-
-  Result := 'MenorImpar_MayorPar = ' + floatToStr(mayorD(MenorImpar)) +
-    floatToStr(menorD(MayorPar));
-
+  if resultado = '' then
+    Result := 0
+  else
+    Result := StrToInt(resultado);
 end;
 
 //LLAMADA
 
-  Edit3.Text := ejercicio2(n);
+Edit3.Text := IntToStr(ejercicio2(n, StrToInt(Edit2.Text)));

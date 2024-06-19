@@ -1,46 +1,54 @@
-//--------------------------------------------------
-//EJERCICIO 1
+//ejericico1
+function factorial(n: Integer): Integer;
 
-function repititivo(b, e: Integer): Integer;
 var
-  p, c: Integer;
+  faCT, c: Integer;
+
 begin
-  c := 0;
-  p := 1;
-  while (e > c) do
+  faCT := 1;
+  c := 1;
+  while (n >= c) do
   begin
-    p := p * b;
+
+    faCT := faCT * c;
     c := c + 1;
   end;
-  repititivo := p;
+
+  factorial := faCT;
+
 end;
 
 function ejercicio1(n: Integer): real;
 var
-  s, num, dd, ter, s1: real;
-  c2, a, b, f: Integer;
+  S, t: real;
+  cn, nu, a, b, fib: Integer;
+
 begin
-  s := 0;
-  a := -2;
-  b := 3;
+  c := 0;
+  cn := 2;
+  S := 0;
+  a := -1;
+  b := 1;
 
-  for c2 := 1 to n do
+  while (n > c) do
   begin
-    s1 := repititivo(c2, c2);
-    num := s1;
-    f := a + b;
-    a := b;
-    b := f;
-    dd := f;
-    ter := num / dd;
-    s := s + ter;
-  end;
 
-  Result := s;
+    nu := cn;
+
+    fib := a + b;
+    a := b;
+    b := fib;
+
+    t := nu / factorial(fib);
+
+    S := S + t;
+
+    c := c + 1;
+    cn := cn + 2;
+  end;
+  ejercicio1 := S;
 end;
 
-//LLAMADA
 
-  Edit3.Text := floatToStr(ejercicio1(n));
-
-
+//llamada
+ Edit3.Text := floatToStr(ejercicio1(n));

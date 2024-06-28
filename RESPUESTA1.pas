@@ -1,4 +1,5 @@
 //ejericico1
+
 function factorial(n: Integer): Integer;
 
 var
@@ -18,37 +19,31 @@ begin
 
 end;
 
-function ejercicio1(n: Integer): real;
+
+function ejercicio1repe(n: Integer): real;
 var
-  S, t: real;
-  cn, nu, a, b, fib: Integer;
+  suma, nm, dn: real;
+  s1, a, b, f: Integer;
 
 begin
   c := 0;
-  cn := 2;
-  S := 0;
+  suma := 0;
+  s1 := 1;
   a := -1;
-  b := 1;
-
+  b := 2;
   while (n > c) do
   begin
-
-    nu := cn;
-
-    fib := a + b;
-    a := b;
-    b := fib;
-
-    t := nu / factorial(fib);
-
-    S := S + t;
-
     c := c + 1;
-    cn := cn + 2;
+    f := a + b;
+    a := b;
+    b := f;
+    suma := suma + factorial(s1) / f;
+
+    s1 := s1 + 2;
+
   end;
-  ejercicio1 := S;
+  Result := suma;
 end;
 
-
 //llamada
- Edit3.Text := floatToStr(ejercicio1(n));
+Edit3.Text := floatToStr(ejercicio1repe(n));

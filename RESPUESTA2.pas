@@ -1,25 +1,41 @@
 
 //EJERCICIO 2
 
-function ejercicio2(n: Integer; k: Integer): Integer;
+function InvertirPalabra(palabra: string): string;
 var
-  cad: string;
-  resultado: string;
+  i: Integer;
+  invertida: string;
 begin
-  cad := IntToStr(n);
-  k := k + 1;
-
-  if (k <= Length(cad)) and (k > 0) then
-    resultado := Copy(cad, k, Length(cad) - k + 1)
-  else
-    resultado := '';
-
-  if resultado = '' then
-    Result := 0
-  else
-    Result := StrToInt(resultado);
+  invertida := '';
+  for i := length(palabra) downto 1 do
+    invertida := invertida + palabra[i];
+  InvertirPalabra := invertida;
 end;
 
+function ejercicio2repe(cad: string): string;
+var
+  i, inicio: Integer;
+  palabra, resultado: string;
+begin
+  resultado := '';
+  palabra := '';
+  inicio := 1;
+
+  for i := 1 to length(cad) do
+  begin
+    if cad[i] = ' ' then
+    begin
+      palabra := Copy(cad, inicio, i - inicio);
+      resultado := resultado + InvertirPalabra(palabra) + ' ';
+      inicio := i + 1;
+    end;
+  end;
+
+  palabra := Copy(cad, inicio, length(cad) - inicio + 1);
+  resultado := resultado + InvertirPalabra(palabra);
+
+  Result := resultado;
+end;
 //LLAMADA
 
-Edit3.Text := IntToStr(ejercicio2(n, StrToInt(Edit2.Text)));
+  Edit3.Text := ejercicio2repe(cad);
